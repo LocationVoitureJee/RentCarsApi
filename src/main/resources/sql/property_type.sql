@@ -1,0 +1,2 @@
+INSERT INTO property_type (id, designation) VALUES ('c5272579-16e0-4f5c-b30c-6e7c0f7dd7c6', 'Appartement');
+INSERT INTO property_type (id, designation) VALUES ('c5272579-15e0-4f5c-b30c-6e7c0f7dd7c6', 'Maison');
