@@ -1,1 +1,16 @@
+version: '3.8'
 
+services:
+  db:
+    image: postgres
+    container_name: mon_postgres2
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: rent-car-api
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5431:5431"
+
+volumes:
+  postgres_data:
