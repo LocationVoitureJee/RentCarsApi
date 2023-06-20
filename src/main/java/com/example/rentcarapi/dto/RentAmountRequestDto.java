@@ -1,13 +1,15 @@
 package com.example.rentcarapi.dto;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
-public record RentAmountRequestDto(
-        @NotNull
-        @Positive
-        double rentAmount) {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class RentAmountRequestDto {
 
+        private double rentAmount;
 }

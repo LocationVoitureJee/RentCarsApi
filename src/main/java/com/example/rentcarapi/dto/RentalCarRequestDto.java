@@ -1,31 +1,21 @@
 package com.example.rentcarapi.dto;
 
-import jakarta.validation.constraints.*;
-import lombok.Builder;
-@Builder
-public record RentalCarRequestDto(
-        @NotNull
-        @Size(max = 200)
-        String brand,
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-        @NotNull
-        String model,
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class RentalCarRequestDto {
 
-        @NotNull
-        Double rentAmount,
-
-        @NotNull
-        Double securityDepositAmount,
-
-
-        @Positive
-        Integer numberOfSeats,
-
-
-        @Positive
-        Integer numberOfDoors,
-
-
-        Boolean hasAirConditioning) {
-
+        private String brand;
+        private String model;
+        private double rentAmount;
+        private double securityDepositAmount;
+        private int numberOfSeats;
+        private int numberOfDoors;
+        private Boolean hasAirConditioning;
 }

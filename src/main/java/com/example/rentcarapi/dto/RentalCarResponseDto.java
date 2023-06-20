@@ -1,14 +1,24 @@
 package com.example.rentcarapi.dto;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
-public record RentalCarResponseDto(String brand,
-                                   String model,
-                                   Double rent_amount,
-                                   Double security_deposit_amount,
-                                   Integer number_of_seats ,
-                                   Integer number_of_doors,
-                                   Boolean has_air_conditioning
-                                   ) {
+import java.util.UUID;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class RentalCarResponseDto {
+
+    private UUID id;
+    private String brand;
+    private String model;
+    private double rentAmount;
+    private double securityDepositAmount;
+    private int numberOfSeats;
+    private int numberOfDoors;
+    private Boolean hasAirConditioning;
 }

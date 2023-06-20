@@ -11,14 +11,15 @@ import java.util.stream.Collectors;
 @Component
 public class RentalCarDtoMapper {
 
-    public List<RentalCarResponseDto> mapToDtoList(List<RentalCarEntity> rentalProperties) {
+    public List<RentalCarResponseDto> toDtoList(List<RentalCarEntity> rentalProperties) {
         return rentalProperties.stream()
-                .map(this::mapToDto)
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 
-    public RentalCarResponseDto mapToDto(RentalCarEntity rentalCar) {
+    public RentalCarResponseDto toDto(RentalCarEntity rentalCar) {
         return new RentalCarResponseDto(
+                rentalCar.getId(),
                 rentalCar.getBrand(),
                 rentalCar.getModel(),
                 rentalCar.getRentAmount(),
@@ -26,19 +27,29 @@ public class RentalCarDtoMapper {
                 rentalCar.getNumberOfSeats(),
                 rentalCar.getNumberOfDoors(),
                 rentalCar.getHasAirConditioning()
-                );
+        );
     }
 
-    public RentalCarEntity mapToEntity(RentalCarRequestDto rentalCarsRequestDto) {
-        return new RentalCarEntity(
-                rentalCarsRequestDto.brand(),
-                rentalCarsRequestDto.model(),
-                rentalCarsRequestDto.rentAmount(),
-                rentalCarsRequestDto.securityDepositAmount(),
-                rentalCarsRequestDto.numberOfSeats(),
-                rentalCarsRequestDto.numberOfDoors(),
-                rentalCarsRequestDto.hasAirConditioning()
-          );
 
-}
+    public RentalCarEntity toEntity(RentalCarRequestDto rentalCarsRequestDto) {
+        RentalCarEntity rentalCar = new RentalCarEntity();
+        rentalCar.setBrand(rentalCarsRequestDto.getBrand());
+        rentalCar.setModel(rentalCarsRequestDto.getModel());
+        rentalCar.setRentAmount(rentalCarsRequestDto.getRentAmount());
+        rentalCar.setSecurityDepositAmount(rentalCarsRequestDto.getSecurityDepositAmount());
+        rentalCar.setNumberOfSeats(rentalCarsRequestDto.getNumberOfSeats());
+        rentalCar.setNumberOfDoors(rentalCarsRequestDto.getNumberOfDoors());
+        rentalCar.setHasAirConditioning(rentalCarsRequestDto.getHasAirConditioning());
+        return rentalCar;
+    }
+
+    public void updateEntityFromDto(RentalCarRequestDto rentalCarsRequestDto, RentalCarEntity rentalCarEntity) {
+        rentalCarEntity.setBrand(rentalCarsRequestDto.getBrand());
+        rentalCarEntity.setModel(rentalCarsRequestDto.getModel());
+        rentalCarEntity.setRentAmount(rentalCarsRequestDto.getRentAmount());
+        rentalCarEntity.setSecurityDepositAmount(rentalCarsRequestDto.getSecurityDepositAmount());
+        rentalCarEntity.setNumberOfSeats(rentalCarsRequestDto.getNumberOfSeats());
+        rentalCarEntity.setNumberOfDoors(rentalCarsRequestDto.getNumberOfDoors());
+        rentalCarEntity.setHasAirConditioning(rentalCarsRequestDto.getHasAirConditioning());
+    }
 }
